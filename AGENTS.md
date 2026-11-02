@@ -2062,7 +2062,24 @@ Before modifying shared components, inspect their consumers.
 When a change affects multiple routes, identify the impact before implementing.
 
 ---
+## UI/UX Design & Interaction Standards
 
+- **No Fake Live Indicators:** Never use blinking dots, pulsing circles, animated status lights, or live indicators unless they represent genuinely active, real-time functionality. Avoid cheap AI-generated website patterns.
+- **Avoid Box-Heavy Design:** Do not wrap every element in a card or add unnecessary borders, shadows, backgrounds, or containers. Use visual hierarchy, whitespace, typography, subtle separation, and depth intentionally.
+- **Modern AI-Native Design:** Create polished, futuristic, premium interfaces with thoughtful visual details, fluid transitions, subtle gradients, layered surfaces, and purposeful animations. Avoid generic AI dashboard templates.
+- **Human-Friendly Language:** Always use simple, natural, human-sounding language. Prefer short sentences, familiar words, clear labels, and helpful descriptions. Avoid complicated technical terms, robotic copy, unnecessary jargon, and confusing button labels.
+- **Break the Block Layout Pattern:** Avoid repetitive grids of identical cards and rigid sections. Use creative layouts, floating elements, overlapping layers, contextual panels, expandable content, horizontal interactions, and meaningful visual variations.
+- **Animation-First Experience:** Use smooth, purposeful animations for navigation, transitions, expanding sections, gestures, feedback, loading, and state changes. Prefer natural easing and spring-based motion. Never animate purely for decoration or at the cost of performance.
+- **Gesture-Friendly Controls:** Support intuitive gestures such as swipe, drag, long press, pull-to-refresh, and pinch where they genuinely improve usability. Always provide visible alternatives for important actions.
+- **Comfortable Spacing:** Maintain generous and consistent spacing between elements. Avoid cramped layouts, oversized controls, unnecessary empty space, and visual clutter.
+- **Mobile-First Design:** Design for small screens first, then adapt to tablets and desktops. Ensure responsive layouts, readable text, touch-friendly controls, safe-area handling, and no horizontal overflow.
+- **Clear Interaction Feedback:** Every interactive element must communicate its state through appropriate visual feedback, such as pressed, selected, disabled, loading, success, or error states. Never use animation as a substitute for clear feedback.
+- **Consistent Design System:** Reuse shared typography, spacing, colors, shapes, motion values, and component patterns. Avoid random styling, inconsistent corner radii, excessive shadows, and hardcoded design values.
+- **Accessibility & Performance:** Respect reduced-motion settings, maintain readable contrast, support screen readers, and keep animations smooth on lower-end devices.
+- **Quality Over Decoration:** Every visual effect, container, animation, gesture, and control must have a clear purpose. Prioritize usability, originality, clarity, and a cohesive experience over visual gimmicks.
+- ALWAYS read and strictly follow both the Website Development and Android Development from /skills/app-engineering,/skills/website-engineering `SKILL.md` files before starting any task; treat them as mandatory engineering and implementation standards.
+- Automatically identify the project type (Web or Android), apply the corresponding skill throughout planning, coding, testing, and review, and never bypass its rules without explicit approval.
+- 
 # 34. PRODUCTION CHECKLIST
 
 Before production:
