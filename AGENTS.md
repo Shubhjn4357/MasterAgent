@@ -14,6 +14,8 @@ The website must feel professionally designed, deliberately composed, responsive
 
 Do not produce generic AI-generated websites.
 
+- ALWAYS read and strictly follow both the Website Development and Android Development from /skills/app-engineering,skills/website-engineering `SKILL.md` files before starting any task; treat them as mandatory engineering and implementation standards.
+- Automatically identify the project type (Web or Android), apply the corresponding skill throughout planning, coding, testing, and review, and never bypass its rules without explicit approval.
 ## Absolute restrictions
 
 1. NEVER center the entire website by default.
