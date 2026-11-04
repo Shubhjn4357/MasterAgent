@@ -84,3 +84,4 @@ export async function runInstall(args) {
 
   console.log('\n✨ Master Agent installation complete! Ready to use.\n');
 }
+
