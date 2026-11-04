@@ -31,3 +31,4 @@ if (content.includes(normalizedTarget)) {
   console.error('Target not found in AGENTS.md');
   process.exit(1);
 }
+

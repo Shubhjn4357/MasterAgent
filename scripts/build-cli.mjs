@@ -52,3 +52,4 @@ const res = spawnSync(bin, process.argv.slice(2), { stdio: 'inherit' });
 process.exit(res.status ?? 0);
 `;
 }
+
