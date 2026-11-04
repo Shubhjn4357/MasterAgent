@@ -3,25 +3,51 @@
   "version": "4.8.0",
   "description": "Master Agent: Enterprise AI engineering, website intelligence, Android intelligence, UI design system, anti-pattern detection, and specialist worker agents.",
   "type": "module",
+  "main": "cli/bin/cli.js",
   "bin": {
-    "master-agent": "cli/bin/cli.js",
-    "impeccable": "cli/bin/cli.js"
+    "master-agent": "cli/bin/cli.js"
   },
+  "files": [
+    "cli/",
+    "skills/",
+    "agents/",
+    "plugin/",
+    "hooks/",
+    "README.md",
+    "AGENTS.md",
+    "LICENSE"
+  ],
   "scripts": {
     "build:master-agent": "node scripts/build-master-agent.mjs",
     "detect": "node cli/bin/cli.js detect",
     "audit": "node cli/bin/cli.js detect",
+    "install:global": "node cli/bin/cli.js install --global",
+    "install:project": "node cli/bin/cli.js install --project",
     "help": "node cli/bin/cli.js help"
   },
   "keywords": [
     "master-agent",
     "ai",
+    "skills",
     "design-system",
     "frontend",
     "engineering",
     "android",
     "anti-patterns",
     "accessibility",
-    "ux"
-  ]
+    "ux",
+    "antigravity",
+    "claude-plugin",
+    "cursor"
+  ],
+  "author": "Shubh Jain",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shubhjn4357/MasterAgent.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Shubhjn4357/MasterAgent/issues"
+  },
+  "homepage": "https://github.com/Shubhjn4357/MasterAgent#readme"
 }
