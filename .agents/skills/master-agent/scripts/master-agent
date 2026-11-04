@@ -1,0 +1,77 @@
+#!/bin/sh
+# Master Agent launcher. Runs the platform binary shipped next to this script:
+#   <this dir>/bin/<os>-<arch>/master-agent (or impeccable)
+set -eu
+
+probe_ok() {
+  probe_out=$(MASTER_AGENT_LAUNCHER_PROBE=1 "$1" engine-probe 2>/dev/null) || return 1
+  case "$probe_out" in
+    *engine*) probe_version=${probe_out#*engine }; return 0 ;;
+  esac
+  return 1
+}
+
+dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+[ -x "$0" ] || chmod +x "$0" 2>/dev/null || :
+manifest="$dir/engine-checksums.txt"
+
+: "${MASTER_AGENT_SKILL_DIR:=$(CDPATH= cd -- "$dir/.." && pwd)}"
+: "${MASTER_AGENT_SELF:=$0}"
+: "${IMPECCABLE_SKILL_DIR:=$MASTER_AGENT_SKILL_DIR}"
+: "${IMPECCABLE_SELF:=$MASTER_AGENT_SELF}"
+export MASTER_AGENT_SKILL_DIR MASTER_AGENT_SELF IMPECCABLE_SKILL_DIR IMPECCABLE_SELF
+
+if [ -n "${MASTER_AGENT_BIN:-}" ] && [ -x "${MASTER_AGENT_BIN}" ]; then
+  exec "${MASTER_AGENT_BIN}" "$@"
+fi
+if [ -n "${IMPECCABLE_BIN:-}" ] && [ -x "${IMPECCABLE_BIN}" ]; then
+  exec "${IMPECCABLE_BIN}" "$@"
+fi
+
+case "$(uname -s 2>/dev/null || echo unknown)" in
+  Darwin) os=darwin ;;
+  Linux) os=linux ;;
+  MINGW*|MSYS*|CYGWIN*|Windows_NT) os=windows ;;
+  *) os=unknown ;;
+esac
+case "$(uname -m 2>/dev/null || echo unknown)" in
+  arm64|aarch64) arch=arm64 ;;
+  x86_64|amd64) arch=x64 ;;
+  *) arch=unknown ;;
+esac
+
+version=""
+[ -f "$dir/VERSION" ] && version=$(tr -d '[:space:]' < "$dir/VERSION")
+exe=""
+[ "$os" = windows ] && exe=".exe"
+
+bin="$dir/bin/$os-$arch/master-agent$exe"
+[ -f "$bin" ] || bin="$dir/bin/$os-$arch/impeccable$exe"
+if [ -f "$bin" ] && { [ -x "$bin" ] || chmod +x "$bin" 2>/dev/null; }; then
+  exec "$bin" "$@"
+fi
+
+home_bin="${HOME:-/nonexistent}/.master-agent/bin/master-agent$exe"
+[ -f "$home_bin" ] || home_bin="${HOME:-/nonexistent}/.impeccable/bin/impeccable$exe"
+if [ -x "$home_bin" ] && probe_ok "$home_bin"; then
+  exec "$home_bin" "$@"
+fi
+
+cache_root="${MASTER_AGENT_HOME:-${HOME:-/nonexistent}/.master-agent}"
+cached="$cache_root/bin/$version/master-agent$exe"
+if [ ! -f "$cached" ]; then
+  cached="${IMPECCABLE_HOME:-${HOME:-/nonexistent}/.impeccable}/bin/$version/impeccable$exe"
+fi
+if [ -n "$version" ] && [ -x "$cached" ]; then
+  exec "$cached" "$@"
+fi
+
+if command -v master-agent >/dev/null 2>&1 && probe_ok master-agent; then
+  exec master-agent "$@"
+fi
+if command -v impeccable >/dev/null 2>&1 && probe_ok impeccable; then
+  exec impeccable "$@"
+fi
+
+echo "master-agent: no engine binary found" >&2
+exit 127

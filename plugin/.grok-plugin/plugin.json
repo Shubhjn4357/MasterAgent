@@ -1,0 +1,6 @@
+{
+  "name": "master-agent",
+  "description": "Master Agent: Complete design intelligence, engineering, 24+ commands, specialist subagents, and automated anti-pattern detection.",
+  "version": "4.8.0",
+  "skills": "./skills/"
+}

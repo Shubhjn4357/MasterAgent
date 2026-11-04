@@ -1,0 +1,11 @@
+{
+  "name": "master-agent",
+  "description": "Master Agent: Complete design intelligence, engineering, 24+ commands (/master-agent polish, audit, craft, critique), specialist subagents, and automated anti-pattern detection.",
+  "version": "4.8.0",
+  "author": {
+    "name": "Master Agent Team"
+  },
+  "homepage": "https://github.com/Shubhjn4357/MasterAgent",
+  "repository": "https://github.com/Shubhjn4357/MasterAgent",
+  "skills": "./skills/"
+}

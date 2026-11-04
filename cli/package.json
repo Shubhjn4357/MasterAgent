@@ -1,0 +1,8 @@
+{
+  "name": "master-agent-cli",
+  "version": "4.8.0",
+  "type": "module",
+  "bin": {
+    "master-agent": "bin/cli.js"
+  }
+}

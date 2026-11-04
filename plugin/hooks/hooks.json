@@ -1,0 +1,53 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ ! -f \"${CLAUDE_PLUGIN_ROOT}/skills/master-agent/scripts/master-agent\" ] || sh \"${CLAUDE_PLUGIN_ROOT}/skills/master-agent/scripts/master-agent\" hook",
+            "windows": "cmd /c if exist ${CLAUDE_PLUGIN_ROOT}\\skills\\master-agent\\scripts\\master-agent.cmd ${CLAUDE_PLUGIN_ROOT}\\skills\\master-agent\\scripts\\master-agent.cmd hook",
+            "env": {
+              "MASTER_AGENT_HOOK_HARNESS": "vscode"
+            },
+            "timeout": 5,
+            "statusMessage": "Preparing Master Agent session"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ ! -f \"${CLAUDE_PLUGIN_ROOT}/skills/master-agent/scripts/master-agent\" ] || sh \"${CLAUDE_PLUGIN_ROOT}/skills/master-agent/scripts/master-agent\" hook",
+            "windows": "cmd /c if exist ${CLAUDE_PLUGIN_ROOT}\\skills\\master-agent\\scripts\\master-agent.cmd ${CLAUDE_PLUGIN_ROOT}\\skills\\master-agent\\scripts\\master-agent.cmd hook",
+            "env": {
+              "MASTER_AGENT_HOOK_HARNESS": "vscode"
+            },
+            "timeout": 5,
+            "statusMessage": "Checking UI changes for anti-patterns"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ ! -f \"${CLAUDE_PLUGIN_ROOT}/skills/master-agent/scripts/master-agent\" ] || sh \"${CLAUDE_PLUGIN_ROOT}/skills/master-agent/scripts/master-agent\" hook",
+            "windows": "cmd /c if exist ${CLAUDE_PLUGIN_ROOT}\\skills\\master-agent\\scripts\\master-agent.cmd ${CLAUDE_PLUGIN_ROOT}\\skills\\master-agent\\scripts\\master-agent.cmd hook",
+            "env": {
+              "MASTER_AGENT_HOOK_HARNESS": "vscode"
+            },
+            "timeout": 30,
+            "statusMessage": "Master Agent design deep pass"
+          }
+        ]
+      }
+    ]
+  }
+}

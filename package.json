@@ -1,0 +1,27 @@
+{
+  "name": "master-agent",
+  "version": "4.8.0",
+  "description": "Master Agent: Enterprise AI engineering, website intelligence, Android intelligence, UI design system, anti-pattern detection, and specialist worker agents.",
+  "type": "module",
+  "bin": {
+    "master-agent": "cli/bin/cli.js",
+    "impeccable": "cli/bin/cli.js"
+  },
+  "scripts": {
+    "build:master-agent": "node scripts/build-master-agent.mjs",
+    "detect": "node cli/bin/cli.js detect",
+    "audit": "node cli/bin/cli.js detect",
+    "help": "node cli/bin/cli.js help"
+  },
+  "keywords": [
+    "master-agent",
+    "ai",
+    "design-system",
+    "frontend",
+    "engineering",
+    "android",
+    "anti-patterns",
+    "accessibility",
+    "ux"
+  ]
+}
